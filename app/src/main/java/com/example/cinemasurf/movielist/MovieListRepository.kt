@@ -1,5 +1,6 @@
 package com.example.cinemasurf.movielist
 
+import com.example.cinemasurf.api.MoviesService
 import com.example.cinemasurf.model.Movie
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -12,7 +13,7 @@ interface MovieListRepository {
 }
 
 class DefaultMovieListRepository @Inject constructor(
-    private val movieListService: MovieListService
+    private val moviesService: MoviesService
 ) : MovieListRepository{
     override val movies = MutableStateFlow<List<Movie>>(emptyList())
 
