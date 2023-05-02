@@ -1,7 +1,7 @@
 package com.example.cinemasurf.di
 
 import com.example.cinemasurf.BuildConfig
-import com.example.cinemasurf.movielist.MovieListService
+import com.example.cinemasurf.api.MoviesService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,6 +35,6 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    fun provideVenueService(retrofit: Retrofit): MovieListService =
-        retrofit.create(MovieListService::class.java)
+    fun provideMoviesService(retrofit: Retrofit): MoviesService =
+        retrofit.create(MoviesService::class.java)
 }
