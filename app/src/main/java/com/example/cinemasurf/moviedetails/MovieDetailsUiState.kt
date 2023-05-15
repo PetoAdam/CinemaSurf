@@ -1,5 +1,6 @@
 package com.example.cinemasurf.moviedetails
 
-import com.example.cinemasurf.model.Movie
+import io.swagger.client.models.Movie
+
 
 data class MovieDetailsUiState(val movie: Pair<Movie, Boolean>)

@@ -1,11 +1,13 @@
 package com.example.cinemasurf.di
 
 import com.example.cinemasurf.BuildConfig
+import com.example.cinemasurf.api.DefaultMoviesService
 import com.example.cinemasurf.api.MoviesService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import io.swagger.client.apis.DefaultApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -35,6 +37,13 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    fun provideMoviesService(retrofit: Retrofit): MoviesService =
-        retrofit.create(MoviesService::class.java)
+    fun provideMoviesService(defaultMoviesService: DefaultMoviesService): MoviesService = defaultMoviesService
+
+
+    @Provides
+    @Singleton
+    fun provideDefaultApi(): DefaultApi {
+        return DefaultApi()
+    }
+
 }
