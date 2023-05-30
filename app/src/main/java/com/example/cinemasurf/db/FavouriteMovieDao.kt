@@ -12,11 +12,14 @@ interface FavouriteMovieDao {
     @Query("SELECT * FROM favouriteMovies")
     fun getAllFavouriteMovies(): Flow<List<FavouriteMovie>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Query("SELECT * FROM favouriteMovies WHERE id = :id")
+    fun getFavouriteMovie(id: Int): Flow<FavouriteMovie?>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFavouriteMovie(movie: FavouriteMovie)
 
     @Delete
-    suspend fun deleteFavouriteMovie(id: Int): FavouriteMovie?
+    suspend fun deleteFavouriteMovie(movie: FavouriteMovie)
 
     // Add other methods as needed
 }

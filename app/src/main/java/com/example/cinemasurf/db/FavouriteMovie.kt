@@ -3,6 +3,7 @@ package com.example.cinemasurf.db
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import io.swagger.client.models.Movie
+import java.util.Date
 
 @Entity(tableName = "favouriteMovies")
 data class FavouriteMovie (
@@ -12,9 +13,9 @@ data class FavouriteMovie (
     val overview: String?,
     val poster_path: String?,
     val release_date: String?,
-    val revenue: Int?,
+    val revenue: Long?,
     val runtime: Int?,
-    val vote_average: Double?,
+    val vote_average: Float?,
     val vote_count: Int?
 ) {
     constructor(movie: Movie) : this(
@@ -23,10 +24,10 @@ data class FavouriteMovie (
         movie.homepage,
         movie.overview,
         movie.poster_path,
-        movie.release_date?.toString(),
+        movie.release_date.toString(),
         movie.revenue,
         movie.runtime,
-        movie.vote_average?.toDouble(),
+        movie.vote_average,
         movie.vote_count
     )
 }
