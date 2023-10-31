@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "279866359848",
+    "project_id": "cinemasurf-638f5",
+    "storage_bucket": "cinemasurf-638f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279866359848:android:7a9bf65164e2298c68b51d",
+        "android_client_info": {
+          "package_name": "com.example.cinemasurf"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfYsg1O7Ralt2htCC7j1YWYiSU2qsVeF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

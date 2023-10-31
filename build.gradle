@@ -4,11 +4,21 @@ buildscript {
         room_version = '2.5.0'
         dagger_version = '2.44'
         retrofit_version = '2.6.0'
+        kotlin_version = '1.6.21'
+    }
+    dependencies {
+        classpath 'com.google.gms:google-services:4.3.14'
+        classpath 'com.android.tools.build:gradle:8.0.1'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+    repositories {
+        mavenCentral()
     }
 }
 plugins {
-    id 'com.android.application' version '7.4.0' apply false
-    id 'com.android.library' version '7.4.0' apply false
+    id 'com.android.application' version '8.0.1' apply false
+    id 'com.android.library' version '8.0.1' apply false
     id 'org.jetbrains.kotlin.android' version '1.7.0' apply false
     id 'com.google.dagger.hilt.android' version '2.44' apply false
 }

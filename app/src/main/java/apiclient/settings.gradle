@@ -1,0 +1,3 @@
+package apiclient
+
+rootProject.name = 'kotlin-client'

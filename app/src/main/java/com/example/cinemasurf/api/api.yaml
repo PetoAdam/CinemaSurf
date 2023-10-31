@@ -1,0 +1,100 @@
+swagger: '2.0'
+info:
+  title: CinemaSurf API (using TMDB)
+  version: 1.0.0
+host: api.themoviedb.org
+basePath: /3
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+parameters:
+  apiKey:
+    name: api_key
+    in: query
+    required: true
+    type: string
+paths:
+  /trending/movie/day:
+    get:
+      summary: Get the latest trending movies
+      parameters:
+        - $ref: '#/parameters/apiKey'
+      responses:
+        200:
+          description: A list of trending movies
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/Movie'
+  /search/movie:
+    get:
+      summary: Search for movies
+      parameters:
+        - $ref: '#/parameters/apiKey'
+        - name: query
+          in: query
+          required: true
+          type: string
+        - name: page
+          in: query
+          type: integer
+          minimum: 1
+      responses:
+        200:
+          description: A list of movies matching the search query
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/Movie'
+  /movie/{id}:
+    get:
+      summary: Get details of a movie by ID
+      parameters:
+        - $ref: '#/parameters/apiKey'
+        - name: id
+          in: path
+          required: true
+          type: integer
+        - name: append_to_response
+          in: query
+          type: string
+          description: Additional information to include in the response (e.g. videos, credits)
+      responses:
+        200:
+          description: The details of the specified movie
+          schema:
+            $ref: '#/definitions/Movie'
+definitions:
+  Movie:
+    type: object
+    properties:
+      id:
+        type: integer
+      title:
+        type: string
+      homepage:
+        type: string
+      overview:
+        type: string
+      poster_path:
+        type: string
+      release_date:
+        type: string
+        format: date
+      revenue:
+        type: integer
+      runtime:
+        type: integer
+      vote_average:
+        type: number
+      vote_count:
+        type: integer
