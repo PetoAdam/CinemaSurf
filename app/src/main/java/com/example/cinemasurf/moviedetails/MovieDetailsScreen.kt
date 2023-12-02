@@ -167,6 +167,7 @@ fun ImageSection(
             Icon(
                 imageVector = Icons.TwoTone.Star,
                 contentDescription = "Rating",
+                tint = Color.White,
                 modifier = Modifier
                     .weight(1f)
                     .align(Alignment.CenterVertically)
@@ -176,6 +177,7 @@ fun ImageSection(
             Text(
                 text = roundedRating.toString() ?: "Unknown",
                 style = MaterialTheme.typography.headlineLarge,
+                color = Color.White,
                 modifier = Modifier
                     .padding(10.dp)
                     .weight(2f),
@@ -194,6 +196,7 @@ fun ImageSection(
             Text(
                 text = movie.first.title.orEmpty(),
                 style = MaterialTheme.typography.headlineLarge,
+                color = Color.White,
                 modifier = Modifier
                     .padding(8.dp)
                     .width(300.dp)
@@ -215,6 +218,7 @@ fun ImageSection(
                     } else {
                         Icons.TwoTone.Favorite
                     },
+                    tint = Color.White,
                     contentDescription = "Favorite"
                 )
             }
