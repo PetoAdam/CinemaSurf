@@ -26,7 +26,7 @@ jobs:
       - name: Build Debug APK
         run: ./gradlew assembleDebug
       - name: Get commit hash
-        id: get:commit_hash
+        id: get_commit_hash
         run: echo "::set-output name=commit_hash::$(git rev-parse HEAD)"
       - name: Create Release
         id: create_release
