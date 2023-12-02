@@ -25,13 +25,16 @@ jobs:
         run: ./gradlew build
       - name: Build Debug APK
         run: ./gradlew assembleDebug
+      - name: Get commit hash
+        id: get:commit_hash
+        run: echo "::set-output name=commit_hash::$(git rev-parse HEAD)"
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ steps.get-commit-hash.outputs.commit_hash }}
+          release_name: Release ${{ steps.get-commit-hash.outputs.commit_hash }}
           draft: false
           prerelease: false
