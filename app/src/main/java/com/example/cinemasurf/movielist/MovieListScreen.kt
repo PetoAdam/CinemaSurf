@@ -80,7 +80,11 @@ fun MovieListScreenContent(
     onFavouriteIconClicked: () -> Unit
 ) {
     ContentWithBackgroundLoadingIndicator(state = movieListUiState, onRetry = onRetry) { state ->
-        Column(modifier = Modifier.fillMaxSize())
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = MaterialTheme.colorScheme.background),
+            )
         {
             MovieListHeader(
                 isFavourite = state.showFavourites,
@@ -110,7 +114,8 @@ fun MovieListHeader(
         modifier = modifier
             .fillMaxWidth()
             .height(80.dp)
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 16.dp)
+            .background(MaterialTheme.colorScheme.background),
         verticalAlignment = Alignment.CenterVertically
     ) {
         val searchWeight = if (searchText == "") 1f else 5f
@@ -131,7 +136,8 @@ fun MovieListHeader(
                 text = "Movies",
                 style = MaterialTheme.typography.headlineLarge,
                 modifier = Modifier.weight(3f),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                color = MaterialTheme.colorScheme.onBackground
             )
 
             Spacer(modifier = Modifier.width(16.dp))
@@ -165,14 +171,15 @@ fun SearchBar(
         modifier = modifier
             .clip(RoundedCornerShape(4.dp))
             .padding(horizontal = 8.dp, vertical = 4.dp)
-            .height(36.dp),
+            .height(36.dp)
+            .background(MaterialTheme.colorScheme.background),
         singleLine = true,
         textStyle = MaterialTheme.typography.bodyMedium,
         leadingIcon = {
             Icon(
                 imageVector = Icons.Filled.Search,
                 contentDescription = "Search Icon",
-                tint = Color(0.3f, 0.3f, 0.3f, 0.7f)
+                tint = MaterialTheme.colorScheme.onBackground,
             )
         },
         shape = RoundedCornerShape(8.dp)
@@ -188,11 +195,12 @@ fun TwoWaySlider(
     IconButton(
         onClick = onCheckedChange,
         modifier = modifier
+            .background(MaterialTheme.colorScheme.background)
     ) {
         Icon(
             imageVector = if (isChecked) Icons.Filled.Favorite else Icons.TwoTone.Favorite,
             contentDescription = null,
-            tint = if (isChecked) Color.Red else LocalContentColor.current // Set red tint for filled version
+            tint = if (isChecked) Color.Red else MaterialTheme.colorScheme.onBackground // Set red tint for filled version
         )
     }
 }
@@ -207,6 +215,7 @@ fun MovieList(
         AnimatedVisibility(movieListUiState.searchText != "") {
             Text(
                 text = "Showing results for: " + movieListUiState.searchText,
+                color = MaterialTheme.colorScheme.onBackground,
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentHeight()
@@ -250,7 +259,7 @@ fun MovieListItem(
         )
     }
     Divider(
-        color = Color.Black,
+        color = MaterialTheme.colorScheme.onBackground,
         modifier = Modifier.padding(start = 20.dp, end = 20.dp)
     )
 }
@@ -294,7 +303,7 @@ fun MovieDetails(movie: Movie, modifier: Modifier) {
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier.padding(bottom = 2.dp),
-            color = Color.Black
+            color = MaterialTheme.colorScheme.onBackground
         )
         Text(
             text =
@@ -305,14 +314,14 @@ fun MovieDetails(movie: Movie, modifier: Modifier) {
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             style = MaterialTheme.typography.bodyMedium,
-            color = Color.Black
+            color = MaterialTheme.colorScheme.onBackground
         )
         Text(
             text = "Rating: " + movie.vote_average,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             style = MaterialTheme.typography.bodyMedium,
-            color = Color.Black
+            color = MaterialTheme.colorScheme.onBackground
         )
     }
 }
